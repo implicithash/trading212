@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    ports:
+      - 4444:4444
+
+  chrome:
+    image: selenium/node-chrome:3.141.59
+    depends_on:
+      - selenium-hub
+    environment:
+      - GRID_DEBUG=true
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=2
+      - NODE_MAX_SESSION=5
+
+  firefox:
+    image: selenium/node-firefox:3.141.59
+    depends_on:
+      - selenium-hub
+    environment:
+      - GRID_DEBUG=true
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=2
+      - NODE_MAX_SESSION=5

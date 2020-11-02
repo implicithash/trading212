@@ -1,0 +1,77 @@
+definitions:
+  api.Response:
+    properties:
+      Status:
+        type: integer
+      id:
+        type: integer
+      message:
+        type: string
+    type: object
+  pages.Position:
+    properties:
+      current_price:
+        type: number
+      date_created:
+        type: string
+      direction:
+        type: string
+      id:
+        type: integer
+      instrument:
+        type: string
+      margin:
+        type: number
+      price:
+        type: number
+      quantity:
+        type: integer
+      result:
+        type: number
+      stop_loss:
+        type: string
+      take_profit:
+        type: string
+      trailing_stop:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /positions:
+    post:
+      consumes:
+      - application/json
+      description: Create a new position with the input data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: Create a new position
+      tags:
+      - positions
+  /positions/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of the position
+      parameters:
+      - description: Position ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pages.Position'
+      summary: Get details of the position
+      tags:
+      - positions
+swagger: "2.0"

@@ -1,0 +1,8 @@
+{
+	"address": "127.0.0.1:8081",
+	"tradingUrl": "https://www.trading212.com/en/login",
+	"login": "login",
+	"password": "pswd",
+	"dsn": "root:1@tcp(192.168.99.100:3306)/trading?",
+	"hubUrl": "http://192.168.99.100:4444/wd/hub"
+}
